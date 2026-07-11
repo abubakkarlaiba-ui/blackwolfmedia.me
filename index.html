@@ -43,29 +43,25 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
 .btn-outline{background:transparent;color:var(--w);border:1px solid var(--ac)}
 .btn-outline:hover{background:var(--ac);color:var(--b)}
 
-/* Header */
-.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;height:80px;padding:0 32px;max-width:1400px;margin:0 auto}
+/* Header - Minimal */
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.04)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 32px;max-width:1200px;margin:0 auto}
 .header-logo{display:flex;align-items:center}
-.header-logo img{height:42px;width:auto}
-.header-nav{display:flex;align-items:center;gap:28px;list-style:none}
-.header-nav a{color:#bbb;font-size:12px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;transition:color .3s;position:relative}
-.header-nav a:hover,.header-nav a.active{color:var(--ac)}
-.header-nav .menu-item-has-children{position:relative}
-.header-nav .sub-menu{position:absolute;top:100%;left:0;background:var(--d);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:12px 0;min-width:200px;opacity:0;visibility:hidden;transition:all .3s;margin-top:8px}
-.header-nav .menu-item-has-children:hover .sub-menu{opacity:1;visibility:visible;margin-top:0}
-.header-nav .sub-menu a{padding:8px 20px;display:block;font-size:11px;color:#888}
-.header-nav .sub-menu a:hover{color:var(--ac);background:rgba(255,255,255,.02)}
-.header-right{display:flex;align-items:center;gap:20px}
-.header-right a{color:#bbb;font-size:12px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;transition:color .3s}
-.header-right a:hover{color:var(--ac)}
-.header-cta{background:var(--gd);color:var(--b)!important;padding:8px 20px;border-radius:4px;font-weight:600!important}
+.header-logo img{height:36px;width:auto}
+.header-nav{display:flex;align-items:center;gap:32px;list-style:none}
+.header-nav a{color:#999;font-size:13px;font-weight:400;transition:color .3s;position:relative}
+.header-nav a:hover{color:var(--w)}
+.header-nav a.active{color:var(--w)}
+.header-nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
+.header-nav a:hover::after,.header-nav a.active::after{width:100%}
+.header-cta{background:var(--gd);color:var(--b)!important;padding:8px 22px;border-radius:4px;font-weight:500;font-size:13px;letter-spacing:0;text-transform:none}
+.header-cta:hover{opacity:.9}
 .header-mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:5px}
-.header-mobile-toggle span{width:24px;height:2px;background:var(--w);transition:all .3s}
+.header-mobile-toggle span{width:22px;height:1.5px;background:var(--w);transition:all .3s}
 .header-mobile{display:none}
 
 /* Hero Split Text Style */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px}
 .hero-bg{position:absolute;inset:0;background:var(--b);z-index:0;background-size:cover;background-position:center}
 .hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,168,83,.08) 0%,transparent 60%)}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:0}
@@ -213,10 +209,9 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
 @media(max-width:900px){
   .header-nav{display:none}
   .header-mobile-toggle{display:flex}
-  .header-mobile{display:block;position:fixed;top:80px;left:0;right:0;background:rgba(10,10,10,.98);border-bottom:1px solid rgba(255,255,255,.05);padding:20px 32px;max-height:0;overflow:hidden;transition:max-height .4s}
-  .header-mobile.open{max-height:500px}
-  .header-mobile a{display:block;padding:10px 0;color:#bbb;font-size:13px;letter-spacing:.5px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.03)}
-  .header-mobile .sub-menu{padding-left:20px}
+  .header-mobile{display:block;position:fixed;top:72px;left:0;right:0;background:rgba(10,10,10,.98);border-bottom:1px solid rgba(255,255,255,.04);padding:16px 32px;max-height:0;overflow:hidden;transition:max-height .4s}
+  .header-mobile.open{max-height:400px}
+  .header-mobile a{display:block;padding:12px 0;color:#bbb;font-size:14px;font-weight:400;border-bottom:1px solid rgba(255,255,255,.03)}
   .hero-bottom{grid-template-columns:1fr;gap:30px}
   .split-section{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -231,7 +226,7 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
 </head>
 <body>
 
-<!-- Header Desktop -->
+<!-- Header Desktop - Minimal -->
 <header class="header">
   <div class="header-inner">
     <div class="header-logo">
@@ -240,25 +235,10 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
     <ul class="header-nav">
       <li><a href="#" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li class="menu-item-has-children">
-        <a href="#services">Service</a>
-        <ul class="sub-menu">
-          <li><a href="#services">Website</a></li>
-          <li><a href="#services">Brand Identity</a></li>
-          <li><a href="#services">Video Production</a></li>
-          <li><a href="#services">Social Media</a></li>
-        </ul>
-      </li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#">Packages</a></li>
-      <li><a href="#">Blog</a></li>
+      <li><a href="#contact" class="header-cta">Contact</a></li>
     </ul>
-    <div class="header-right">
-      <a href="#">Ai</a>
-      <a href="#faq">FAQ</a>
-      <a href="#">Pricing</a>
-      <a href="#contact" class="header-cta">Contact</a>
-    </div>
     <button class="header-mobile-toggle" id="mobileToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -267,20 +247,9 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
   <div class="header-mobile" id="mobileMenu">
     <a href="#">Home</a>
     <a href="#about">About</a>
-    <a href="#services">Service</a>
-    <div class="sub-menu">
-      <a href="#services">Website</a>
-      <a href="#services">Brand Identity</a>
-      <a href="#services">Video Production</a>
-      <a href="#services">Social Media</a>
-    </div>
+    <a href="#services">Services</a>
     <a href="#portfolio">Portfolio</a>
-    <a href="#">Packages</a>
-    <a href="#">Blog</a>
-    <a href="#">Ai</a>
-    <a href="#faq">FAQ</a>
-    <a href="#">Pricing</a>
-    <a href="#contact">Contact Us</a>
+    <a href="#contact">Contact</a>
   </div>
 </header>
 
