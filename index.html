@@ -93,6 +93,21 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
 .case-gif-section{width:100%;overflow:hidden}
 .case-gif-section img{width:100%;display:block}
 
+/* Floating Pills Animation */
+.floating-pills{position:relative;width:100%;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.floating-pills .figure-img{position:relative;z-index:1;max-width:400px;width:100%}
+.floating-pills .figure-img img{width:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.4))}
+.floating-pill{position:absolute;padding:12px 28px;border-radius:50px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.3);z-index:2;animation:floatPill 6s ease-in-out infinite}
+.floating-pill.white{background:#fff;color:#111}
+.floating-pill.gold{background:var(--ac);color:#000}
+.floating-pill.dark{background:#1a1a2e;color:#fff;border:1px solid rgba(255,255,255,.1)}
+.floating-pill.pill-1{top:8%;left:10%;animation-delay:0s}
+.floating-pill.pill-2{top:5%;right:15%;animation-delay:1.5s}
+.floating-pill.pill-3{top:25%;right:5%;animation-delay:3s}
+.floating-pill.pill-4{bottom:25%;right:10%;animation-delay:4.5s}
+.floating-pill.pill-5{bottom:10%;left:15%;animation-delay:2s}
+@keyframes floatPill{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-15px) rotate(2deg)}50%{transform:translateY(-8px) rotate(-1deg)}75%{transform:translateY(-20px) rotate(1deg)}}
+
 /* Split Section */
 .split-section{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .split-left{position:relative}
@@ -221,6 +236,13 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
   .expertise-grid{grid-template-columns:1fr}
   .section{padding:60px 0}
   .hero-split-img img{max-height:30px}
+  .floating-pills{min-height:400px}
+  .floating-pill{font-size:11px;padding:10px 20px}
+  .floating-pill.pill-1{top:5%;left:5%}
+  .floating-pill.pill-2{top:3%;right:5%}
+  .floating-pill.pill-3{top:20%;right:0}
+  .floating-pill.pill-4{bottom:20%;right:5%}
+  .floating-pill.pill-5{bottom:5%;left:5%}
 }
 </style>
 </head>
@@ -318,6 +340,22 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
 <div class="case-gif-section">
   <img src="images/case-studies.gif" alt="Case Studies">
 </div>
+
+<!-- Floating Pills Animation -->
+<section class="section">
+  <div class="container">
+    <div class="floating-pills">
+      <div class="floating-pill white pill-1">Content</div>
+      <div class="floating-pill gold pill-2">Brand</div>
+      <div class="floating-pill dark pill-3">Website</div>
+      <div class="floating-pill white pill-4">Creation</div>
+      <div class="floating-pill gold pill-5">Social Media</div>
+      <div class="figure-img">
+        <img src="images/logo.png" alt="Black Wolf Media" style="max-width:250px;margin:0 auto;display:block;filter:drop-shadow(0 20px 60px rgba(212,168,83,.3))">
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Split Section: Our Mission -->
 <section class="section" id="about">
