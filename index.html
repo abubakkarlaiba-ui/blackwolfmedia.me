@@ -108,6 +108,30 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
 .floating-pill.pill-5{bottom:10%;left:15%;animation-delay:2s}
 @keyframes floatPill{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-15px) rotate(2deg)}50%{transform:translateY(-8px) rotate(-1deg)}75%{transform:translateY(-20px) rotate(1deg)}}
 
+/* Portfolio Lightbox */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.portfolio-thumb{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:1;cursor:pointer;border:1px solid rgba(255,255,255,.04);transition:all .4s}
+.portfolio-thumb:hover{border-color:rgba(212,168,83,.3);transform:scale(1.02)}
+.portfolio-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.portfolio-thumb:hover img{transform:scale(1.08)}
+.portfolio-thumb .overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.portfolio-thumb:hover .overlay{opacity:1}
+.portfolio-thumb .overlay span{color:#fff;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);padding:8px 20px;border-radius:50px}
+
+/* Lightbox Popup */
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.lightbox.active{display:flex;opacity:1}
+.lightbox-inner{position:relative;max-width:800px;width:90%;animation:lightboxIn .4s ease}
+.lightbox-inner img{width:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox-close{position:absolute;top:-40px;right:0;color:#fff;font-size:32px;cursor:pointer;background:none;border:none;transition:color .3s}
+.lightbox-close:hover{color:var(--ac)}
+.lightbox-caption{text-align:center;margin-top:16px;color:#aaa;font-size:14px;letter-spacing:1px}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:36px;cursor:pointer;background:rgba(255,255,255,.1);border:none;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.lightbox-nav:hover{background:var(--ac);color:#000}
+.lightbox-nav.prev{left:-70px}
+.lightbox-nav.next{right:-70px}
+@keyframes lightboxIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+
 /* Split Section */
 .split-section{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .split-left{position:relative}
@@ -243,6 +267,9 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
   .floating-pill.pill-3{top:20%;right:0}
   .floating-pill.pill-4{bottom:20%;right:5%}
   .floating-pill.pill-5{bottom:5%;left:5%}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .lightbox-nav.prev{left:10px}
+  .lightbox-nav.next{right:10px}
 }
 </style>
 </head>
@@ -252,7 +279,7 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
 <header class="header">
   <div class="header-inner">
     <div class="header-logo">
-      <a href="#"><img src="images/logo.png" alt="Black Wolf Media" style="height:36px;width:auto;margin-right:10px"></a>
+      <a href="#"><img src="images/logo.png" alt="Black Wolf Media" style="height:40px;width:auto;margin-right:12px;border-radius:6px"></a>
       <span style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--w)">Black Wolf <span style="color:var(--ac)">Media</span></span>
     </div>
     <ul class="header-nav">
@@ -427,37 +454,53 @@ p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px}
   </div>
 </section>
 
-<!-- Brand Identity / Content Creation / Website / Social / AI -->
+<!-- Portfolio / Brand Identity Gallery -->
 <section class="section" id="portfolio">
   <div class="container">
     <div style="text-align:center;max-width:700px;margin:0 auto;">
-      <span class="tag">Our Expertise</span>
-      <h2>A Curated Selection<br>of What We <span style="color:var(--ac);">Do Best</span></h2>
+      <span class="tag">Our Work</span>
+      <h2>Brand Identity <span style="color:var(--ac);">Projects</span></h2>
+      <p style="color:#777;">Click any image to view larger</p>
     </div>
-    <div class="services-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
-      <div class="service-card">
-        <div class="icon-wrap"><img src="images/Rectangle-278.png" alt="Brand Identity"></div>
-        <h3 style="font-size:15px;">Brand Identity</h3>
+    <div class="portfolio-grid">
+      <div class="portfolio-thumb" onclick="openLightbox(0)">
+        <img src="images/portfolio-1.png" alt="Brand Identity Project">
+        <div class="overlay"><span>View</span></div>
       </div>
-      <div class="service-card">
-        <div class="icon-wrap"><img src="images/Rectangle-279.png" alt="Content Creation"></div>
-        <h3 style="font-size:15px;">Content Creation</h3>
+      <div class="portfolio-thumb" onclick="openLightbox(1)">
+        <img src="images/portfolio-2.png" alt="Brand Identity Project">
+        <div class="overlay"><span>View</span></div>
       </div>
-      <div class="service-card">
-        <div class="icon-wrap"><img src="images/Rectangle-276-1.png" alt="Website"></div>
-        <h3 style="font-size:15px;">Website</h3>
+      <div class="portfolio-thumb" onclick="openLightbox(2)">
+        <img src="images/portfolio-3.png" alt="Brand Identity Project">
+        <div class="overlay"><span>View</span></div>
       </div>
-      <div class="service-card">
-        <div class="icon-wrap"><img src="images/Rectangle-287.png" alt="Social Media"></div>
-        <h3 style="font-size:15px;">Social Media</h3>
+      <div class="portfolio-thumb" onclick="openLightbox(3)">
+        <img src="images/portfolio-4.png" alt="Brand Identity Project">
+        <div class="overlay"><span>View</span></div>
       </div>
-      <div class="service-card">
-        <div class="icon-wrap"><img src="images/Rectangle-289.png" alt="AI"></div>
-        <h3 style="font-size:15px;">Ai</h3>
+      <div class="portfolio-thumb" onclick="openLightbox(4)">
+        <img src="images/portfolio-5.png" alt="Brand Identity Project">
+        <div class="overlay"><span>View</span></div>
+      </div>
+      <div class="portfolio-thumb" onclick="openLightbox(5)">
+        <img src="images/portfolio-6.png" alt="Brand Identity Project">
+        <div class="overlay"><span>View</span></div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav prev" onclick="navLightbox(-1)">&#8249;</button>
+    <button class="lightbox-nav next" onclick="navLightbox(1)">&#8250;</button>
+    <img id="lightbox-img" src="" alt="Portfolio Image">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
 
 <!-- Testimonials -->
 <section class="section section-gray">
@@ -726,6 +769,55 @@ document.getElementById('closePopup').addEventListener('click', function(){
 });
 document.getElementById('videoPopup').addEventListener('click', function(e){
   if(e.target === this) this.classList.remove('active');
+});
+
+// Portfolio Lightbox
+const portfolioImages = [
+  'images/portfolio-1.png',
+  'images/portfolio-2.png',
+  'images/portfolio-3.png',
+  'images/portfolio-4.png',
+  'images/portfolio-5.png',
+  'images/portfolio-6.png'
+];
+const portfolioLabels = [
+  'Brand Identity — Packaging Design',
+  'Brand Identity — Product Labels',
+  'Brand Identity — Visual System',
+  'Brand Identity — Print Materials',
+  'Brand Identity — Corporate Identity',
+  'Brand Identity — Stationery Design'
+];
+let currentIndex = 0;
+
+function openLightbox(index) {
+  currentIndex = index;
+  document.getElementById('lightbox-img').src = portfolioImages[index];
+  document.getElementById('lightbox-caption').textContent = portfolioLabels[index];
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function navLightbox(dir) {
+  currentIndex = (currentIndex + dir + portfolioImages.length) % portfolioImages.length;
+  document.getElementById('lightbox-img').src = portfolioImages[currentIndex];
+  document.getElementById('lightbox-caption').textContent = portfolioLabels[currentIndex];
+}
+
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
 });
 
 // Scroll effect
